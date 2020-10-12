@@ -6,5 +6,7 @@
             "email": "a0903153387@yahoo.com.tw"
         }
     ],
-    "require": {}
+    "require": {
+        "nesbot/carbon": "^2.41"
+    }
 }
