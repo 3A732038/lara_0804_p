@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 require __DIR__.'/bootstrap.php';
 require __DIR__.'/vendor/autoload.php';
 // connect to dabase
@@ -81,7 +81,7 @@ try {
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">文章清單
-                    <small>{今日日期}</small>
+                    <small><?php echo Carbon::now()->toDateString(); ?></small>
                 </h1>
             </div>
         </div>
@@ -101,7 +101,7 @@ try {
                 <p><?=mb_substr($row->content, 0, 130, "utf-8"),'…'?></p>
                 <p class="text-right">
                     <span class="glyphicon glyphicon-time"></span>
-                    發表於 <?=$row->created_at?>
+                    發表於 <?=Carbon::createFromFormat('Y-m-d H:i:s', $row->created_at)->diffForHumans()?>    <!-- <?=$row->created_at?> -->
                 </p>
             </div>
             <?php endwhile; ?>
